@@ -5,6 +5,8 @@
 
 #pragma warning(disable:4996)
 
-#define MAX 100000
+#define MAX 1000
+
+void initialize();
 
 bool analysis(char input[]);
