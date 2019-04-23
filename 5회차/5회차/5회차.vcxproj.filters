@@ -37,7 +37,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="data.txt">
+    <Text Include="shuffled_dict.txt">
+      <Filter>소스 파일</Filter>
+    </Text>
+    <Text Include="to_be_deleted_words.txt">
+      <Filter>소스 파일</Filter>
+    </Text>
+    <Text Include="a.txt">
       <Filter>소스 파일</Filter>
     </Text>
   </ItemGroup>

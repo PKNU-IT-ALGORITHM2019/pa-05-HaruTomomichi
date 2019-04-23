@@ -29,7 +29,9 @@
     <ClInclude Include="sub_word.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="data.txt" />
+    <Text Include="a.txt" />
+    <Text Include="shuffled_dict.txt" />
+    <Text Include="to_be_deleted_words.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

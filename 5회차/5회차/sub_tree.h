@@ -16,3 +16,11 @@ NODE *make_node();
 void insert_node(NODE *T, NODE *z);
 
 NODE *search_node(NODE *x, char k[]);
+
+void *del_node(NODE *T, NODE *z);
+
+NODE *find_successor(NODE *x);
+
+NODE *find_min(NODE *x);
+
+void inorder_walk(NODE *x);

@@ -75,3 +75,72 @@ NODE *search_node(NODE *x, char k[]) {
 	}
 	return search_node(x->right, k);
 }
+
+void *del_node(NODE *T, NODE *z) {
+	NODE *x, *y;
+
+	if (z->left == NULL || z->right == NULL) {
+		y = z;
+	}
+	else {
+		y = find_successor(z);
+	}
+
+	if (y->left != NULL) {
+		x = y->left;
+	}
+	else {
+		x = y->right;
+	}
+
+	if (x != NULL) {
+		x->parent = y->parent;
+	}
+
+	if (y->parent == NULL) {
+		int result = word_sort_analysis(x);
+		alphabet_word[result] = x;
+	}
+	else if (y == y->parent->left) {
+		y->parent->left = x;
+	}
+	else {
+		y->parent->right = x;
+	}
+
+	if (y != z) {
+		strcpy(z->word, y->word);
+		strcpy(z->part, y->part);
+		strcpy(z->meaning, y->meaning);
+	}
+
+	free(y);
+}
+
+NODE *find_successor(NODE *x) {
+	if (x->right != NULL) {
+		return find_min(x->right);
+	}
+	NODE *y = x->parent;
+
+	while (y != NULL && x == y->right) {
+		x = y;
+		y = y->parent;
+	}
+	return y;
+}
+
+NODE *find_min(NODE *x) {
+	while (x->left != NULL) {
+		x = x->left;
+	}
+	return x;
+}
+
+void inorder_walk(NODE *x) {
+	if (x != NULL) {
+		inorder_walk(x->left);
+		printf("%s / %s / %s\n", x->word,x->part,x->meaning);
+		inorder_walk(x->right);
+	}
+}

@@ -7,10 +7,7 @@
 
 #pragma warning(disable:4996)
 
-#define MAX 10000
-
-extern NODE *alphabet_word[27];
-extern int alphabet_n[27];
+#define MAX 100000
 
 void initialize();
 
@@ -21,3 +18,15 @@ bool analysis();
 void command_size();
 
 void command_find();
+
+void command_add();
+
+void command_add_assist(int i);
+
+void command_del();
+
+void command_destroy();
+
+void command_destroy_assist();
+
+void command_view();
