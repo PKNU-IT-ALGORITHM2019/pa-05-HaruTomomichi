@@ -2,11 +2,9 @@
 #include "sub_word.h"
 #include "sub_tree.h"
 
-// 26개의 헤드 배열에 1000개의 노드 구조체를 다시 선언하기에는 현재 곤란하므로, 단순 연결리스트로 구현한다
+NODE *alphabet_word[27] = { NULL }; // 26개의 헤드를 저장하는 공간
 
-NODE *alphabet_word[26] = { NULL }; // 26개의 헤드를 저장하는 공간
-
-int alphabet_n[26] = { 0 }; // 각 단어가 저장되는 회수
+int alphabet_n[27] = { 0 }; // 각 단어가 저장되는 회수 / 26번째는 특수문자로 시작하는 단어들 (예 : -lit)
 
 void make_tree_with_data() {
 	int result = word_sort_analysis(input_analysis_data[0]);
@@ -24,6 +22,9 @@ void make_tree_with_data() {
 int word_sort_analysis(char *input_word) {
 	if (islower(input_word[0])) {
 		return input_word[0] - 97;
+	}
+	else if (input_word[0] - 65 < 0) {
+		return 26;
 	}
 	return input_word[0] - 65;
 }
@@ -62,4 +63,15 @@ void insert_node(NODE *T, NODE *z) {
 	else {
 		y->right = z;
 	}
+}
+
+NODE *search_node(NODE *x, char k[]) {
+	if (x == NULL || strcmp(k,x->word) == 0) {
+		return x;
+	}
+
+	if (strcmp(k, x->word) < 0) {
+		return search_node(x->left, k);
+	}
+	return search_node(x->right, k);
 }

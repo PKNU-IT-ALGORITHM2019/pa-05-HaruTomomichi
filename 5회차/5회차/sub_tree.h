@@ -14,3 +14,5 @@ int word_sort_analysis(char *input_word);
 NODE *make_node();
 
 void insert_node(NODE *T, NODE *z);
+
+NODE *search_node(NODE *x, char k[]);

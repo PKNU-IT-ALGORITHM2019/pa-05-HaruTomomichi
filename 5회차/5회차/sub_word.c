@@ -28,7 +28,7 @@ void make_word_for_tree(char input_temp[]) {
 	while (1) {
 		token = strtok(NULL, " ");
 
-		if (token[strlen(token)-1] != ')') {
+		if (token == NULL || token[strlen(token)-1] != ')') {
 			break;
 		}
 
@@ -39,7 +39,12 @@ void make_word_for_tree(char input_temp[]) {
 	make_analysis_data(complete, i);
 	i++;
 
-	strcpy(complete, token);
+	if (token == NULL) {
+		strcpy(complete, "\0");
+	}
+	else {
+		strcpy(complete, token);
+	}
 
 	while (1) {
 		token = strtok(NULL, " ");
@@ -59,6 +64,5 @@ void make_word_for_tree(char input_temp[]) {
 }
 
 void make_analysis_data(char complete[],int i) {
-	input_analysis_data[i] = realloc(input_analysis_data[i],sizeof(complete));
-	strcpy(input_analysis_data[i], complete);
+	input_analysis_data[i] = strdup(complete);
 }
