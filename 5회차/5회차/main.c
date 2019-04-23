@@ -37,7 +37,10 @@ void initialize() {
 }
 
 bool analysis(char input[]) {
-	if (strcmp(input, "find") == 0) {
+	if (strcmp(input, "size") == 0) {
+		return true;
+	}
+	else if (strcmp(input, "find") == 0) {
 		return true;
 	}
 	else if (strcmp(input, "add") == 0) {

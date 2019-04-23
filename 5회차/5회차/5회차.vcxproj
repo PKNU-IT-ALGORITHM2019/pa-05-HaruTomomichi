@@ -28,6 +28,9 @@
     <ClInclude Include="sub_tree.h" />
     <ClInclude Include="sub_word.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="data.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{8BA79B30-457A-4F7D-B475-C24C7B9A07F8}</ProjectGuid>
