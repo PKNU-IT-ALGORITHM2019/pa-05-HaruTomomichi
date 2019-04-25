@@ -18,29 +18,14 @@
     <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="sub_tree.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="sub_word.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
-    <ClInclude Include="sub_tree.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="sub_word.h">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shuffled_dict.txt">
-      <Filter>소스 파일</Filter>
-    </Text>
-    <Text Include="to_be_deleted_words.txt">
       <Filter>소스 파일</Filter>
     </Text>
     <Text Include="a.txt">

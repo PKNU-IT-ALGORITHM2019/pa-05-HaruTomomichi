@@ -20,18 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="sub_tree.c" />
-    <ClCompile Include="sub_word.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h" />
-    <ClInclude Include="sub_tree.h" />
-    <ClInclude Include="sub_word.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="a.txt" />
     <Text Include="shuffled_dict.txt" />
-    <Text Include="to_be_deleted_words.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -92,6 +87,14 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <HeapReserveSize>100000000</HeapReserveSize>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <StackReserveSize>1900000000</StackReserveSize>
+      <StackCommitSize>
+      </StackCommitSize>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
