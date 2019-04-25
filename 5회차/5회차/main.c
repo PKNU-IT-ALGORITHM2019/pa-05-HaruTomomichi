@@ -1,10 +1,9 @@
 #include "main.h"
 
 char first[MAX] = { NULL }, second[MAX] = { NULL };
-
 NODE *alphabet_word[27] = { NULL }; // 26개의 헤드를 저장하는 공간
-
 int alphabet_n[27] = { 0 }; // 각 단어가 저장되는 회수 / 26번째는 특수문자로 시작하는 단어들 (예 : -lit)
+NODE *find_value = NULL;
 
 void main() {
 
@@ -109,7 +108,7 @@ void command_size() {
 void command_find(){
 
 	int result = word_sort_analysis(second);
-	NODE *find_value = search_node(alphabet_word[result], second);
+	find_value = search_node(alphabet_word[result], second);
 
 	if (find_value == NULL) {
 		printf("Can not find such that word - ERROR!\n");
@@ -152,7 +151,7 @@ void command_add_assist(int i) {
 
 bool command_del() {
 	int result = word_sort_analysis(second);
-	NODE *find_value = search_node(alphabet_word[result], second);
+	find_value = search_node(alphabet_word[result], second);
 
 	if (find_value == NULL && strcmp(first, "deleteall") == 0) {
 		return false;
@@ -173,7 +172,7 @@ bool command_del() {
 
 		alphabet_n[result]--;
 		find_value = del_node(alphabet_word[result], find_value);
-		free(find_value);
+		//free(find_value);
 
 		find_value = NULL;
 	}
@@ -213,7 +212,7 @@ void command_destroy() {
 void command_view() {
 	int result = word_sort_analysis(second);
 	
-	printf("현재 저장된 단어의 개수는 %d입니다\n", alphabet_n[result]);
+	printf("현재 저장된 단어의 개수는 %d입니다\n\n", alphabet_n[result]);
 	inorder_walk(alphabet_word[result]);
 }
 
@@ -222,14 +221,8 @@ void command_view() {
 void make_tree_with_data() {
 	int result = word_sort_analysis(input_analysis_data[0]);
 
-	if (alphabet_n[result] == 0) {
-		alphabet_word[result] = make_node();
-		alphabet_n[result]++;
-	}
-	else {
-		insert_node(alphabet_word[result], make_node());
-		alphabet_n[result]++;
-	}
+	insert_node(make_node(),result);
+	alphabet_n[result]++;
 }
 
 NODE *make_node() {
@@ -254,9 +247,9 @@ int word_sort_analysis(char *input_word) {
 	return input_word[0] - 65;
 }
 
-void insert_node(NODE *T, NODE *z) {
+void insert_node(NODE *z,int result) {
 	NODE *y = NULL;
-	NODE *x = T; // T = head
+	NODE *x = alphabet_word[result];
 
 	while (x != NULL) {
 		y = x;
@@ -270,11 +263,16 @@ void insert_node(NODE *T, NODE *z) {
 	}
 	z->parent = y;
 
-	if (strcmp(z->word, y->word) < 0) {
-		y->left = z;
+	if (y == NULL) {
+		alphabet_word[result] = z;
 	}
 	else {
-		y->right = z;
+		if (strcmp(z->word, y->word) < 0) {
+			y->left = z;
+		}
+		else {
+			y->right = z;
+		}
 	}
 }
 
@@ -295,7 +293,7 @@ NODE *search_node(NODE *x, char *k) {
 }
 
 NODE *del_node(NODE *T, NODE *z) {
-	NODE *x, *y;
+	NODE *x = NULL, *y = NULL;
 
 	if (z->left == NULL || z->right == NULL) {
 		y = z;
@@ -368,7 +366,6 @@ void inorder_walk(NODE *x) {
 //
 
 void make_word_for_tree(char *input_temp) {
-
 	char *token = NULL, complete[MAX] = { NULL };
 	int i = 0;
 

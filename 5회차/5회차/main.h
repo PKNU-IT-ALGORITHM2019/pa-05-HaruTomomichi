@@ -34,6 +34,8 @@ bool command_del();
 
 void command_destroy();
 
+void command_destroy_assist();
+
 void command_view();
 
 //
@@ -44,7 +46,7 @@ NODE *make_node();
 
 int word_sort_analysis(char *input_word);
 
-void insert_node(NODE *T, NODE *z);
+void insert_node(NODE *z, int result);
 
 NODE *search_node(NODE *x, char *k);
 
