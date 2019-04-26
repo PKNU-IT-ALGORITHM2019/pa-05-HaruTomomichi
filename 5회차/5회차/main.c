@@ -327,9 +327,9 @@ NODE *del_node(NODE *T, NODE *z) {
 	}
 
 	if (y != z) {
-		strcpy(z->word, y->word);
-		strcpy(z->part, y->part);
-		strcpy(z->meaning, y->meaning);
+		z->word = strdup(y->word);
+		z->part = strdup(y->part);
+		z->meaning = strdup(y->meaning);
 	}
 
 	return y;
